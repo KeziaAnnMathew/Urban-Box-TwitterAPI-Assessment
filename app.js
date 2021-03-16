@@ -34,7 +34,6 @@ var client = new Twitter({
 });
 
 var filter='';
-<<<<<<< HEAD
 var model, models = [];
 var retweetflag=false;
 
@@ -42,11 +41,6 @@ var retweetflag=false;
 app.post('/tweets/filter',function(req,res){
     filter=req.body.searchfilter;
     
-=======
-var retweetflag=false;
-app.post('/tweets/filter',function(req,res){
-    filter=req.body.searchfilter;
->>>>>>> 45b498a94a8d723ef15072de46ba2f61e253397f
     //search based on  hash tags
     var params = {q: filter};
     client.get('search/tweets', params, function(error, tweets, response) {
@@ -59,7 +53,6 @@ app.post('/tweets/filter',function(req,res){
                 retweetflag=false;
             }
             //setting value for mongodb
-<<<<<<< HEAD
             model = new Tweetdata();
             model.DateofTweet=tweets.statuses[i].created_at;
             model.TweetDescription=tweets.statuses[i].text;
@@ -69,7 +62,7 @@ app.post('/tweets/filter',function(req,res){
             model.retweets=retweetflag;
             model.retweetcount=tweets.statuses[i].retweet_count;
             model.searchfilter=filter;
-            console.log(model)
+            // console.log(model)
             models.push(model);
             // console.log(models)
             // var item={
@@ -102,26 +95,6 @@ app.post('/tweets/filter',function(req,res){
           ); 
         }
     })
-=======
-            var item={
-                DateofTweet:tweets.statuses[i].created_at,
-                TweetDescription:tweets.statuses[i].text,
-                Username:tweets.statuses[i].user.name,
-                location:tweets.statuses[i].user.location,
-                timezone:tweets.statuses[i].user.time_zone,
-                retweets:retweetflag,
-                retweetcount:tweets.statuses[i].retweet_count,
-                searchfilter:filter
-            }
-            // console.log(item);
-            //adding documnet to mongodb collection
-            var tweet=Tweetdata(item)
-            tweet.save();
-
-        }
-        }
-})
->>>>>>> 45b498a94a8d723ef15072de46ba2f61e253397f
     //retrieving values from mongo db
     Tweetdata.find({searchfilter:filter})
     .then(function(tweets){
@@ -130,20 +103,13 @@ app.post('/tweets/filter',function(req,res){
             tweets,
             flag:true
         })
-<<<<<<< HEAD
         //console.log(tweets);
-=======
-        // console.log(tweets);
->>>>>>> 45b498a94a8d723ef15072de46ba2f61e253397f
     });
 });
 //filter on retweetes
 app.post('/filterretweets',function(req,res){
     var flag=req.body.retweetfilter;
-<<<<<<< HEAD
    
-=======
->>>>>>> 45b498a94a8d723ef15072de46ba2f61e253397f
     if(flag=="notretweeted"){
         Tweetdata.find({searchfilter:filter,retweets:false})
         .then(function(tweets){
