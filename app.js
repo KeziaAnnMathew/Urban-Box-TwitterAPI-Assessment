@@ -62,7 +62,7 @@ app.post('/tweets/filter',function(req,res){
             model.retweets=retweetflag;
             model.retweetcount=tweets.statuses[i].retweet_count;
             model.searchfilter=filter;
-            // console.log(model)
+            console.log(model)
             models.push(model);
             // console.log(models)
             // var item={

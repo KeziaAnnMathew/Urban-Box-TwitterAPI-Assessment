@@ -14,11 +14,6 @@ const TweetSchema = new Schema({
     searchfilter:String
 });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-var Tweetdata = mongoose.model('tweetdata', TweetSchema);
-
-=======
 TweetSchema.statics.bulkInsert = function(models, fn) {
     if (!models || !models.length)
       return fn(null);
@@ -37,9 +32,4 @@ TweetSchema.statics.bulkInsert = function(models, fn) {
   };
 
 var Tweetdata = mongoose.model('tweetdata', TweetSchema);
->>>>>>> 24e0095 (bulkset commit)
-=======
-var Tweetdata = mongoose.model('tweetdata', TweetSchema);
-
->>>>>>> 45b498a94a8d723ef15072de46ba2f61e253397f
 module.exports = Tweetdata;
