@@ -85,7 +85,7 @@ app.post('/tweets/filter',function(req,res){
         Tweetdata.bulkInsert(models
             , function(err, results) {
             if (err) {
-              console.log(err);
+              console.log(err.writeErrors);
         //       process.exit(1);
             } else {
               console.log(results);

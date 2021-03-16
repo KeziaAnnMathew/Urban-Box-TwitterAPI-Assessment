@@ -4,6 +4,10 @@ const Schema= mongoose.Schema;
 
 
 const TweetSchema = new Schema({
+    _id:{
+      type:String,
+      autoIndex:true
+    },
     DateofTweet:String,
     TweetDescription:String,
     Username:String,
